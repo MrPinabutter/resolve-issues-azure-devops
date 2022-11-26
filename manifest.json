@@ -8,5 +8,11 @@
      ],
     "background": { 
       "scripts": ["script.js"]
-    }
+    },
+    "icons": 
+        {
+            "192": "./icon-192x192.png"
+        }
+        
+    
 }
