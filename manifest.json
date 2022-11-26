@@ -1,0 +1,12 @@
+{
+    "name": "procura texto no spotify",
+    "version": "1.0",
+    "manifest_version": 2,
+    "description": "procura texto no spotify",
+    "permissions": [
+      "contextMenus"
+     ],
+    "background": { 
+      "scripts": ["script.js"]
+    }
+}
