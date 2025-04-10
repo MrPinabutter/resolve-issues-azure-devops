@@ -1,18 +1,23 @@
 {
-    "name": "procura texto no spotify",
-    "version": "1.0",
-    "manifest_version": 2,
-    "description": "procura texto no spotify",
-    "permissions": [
-      "contextMenus"
-     ],
-    "background": { 
-      "scripts": ["script.js"]
-    },
-    "icons": 
-        {
-            "192": "./icon-192x192.png"
-        }
-        
-    
+  "name": "Azure DevOps Comment Resolver",
+  "version": "1.0",
+  "manifest_version": 3,
+  "permissions": [
+    "contextMenus",
+    "scripting",
+    "activeTab"
+  ],
+  "description": "Resolve all comments in devops",
+  "background": {
+    "service_worker": "script.js"
+  },
+  "host_permissions": [
+    "https://dev.azure.com/*"
+  ],
+  "action": {
+    "default_title": "Resolve Comments"
+  },
+  "icons": {
+    "192": "./icon-192x192.png"
+  }
 }

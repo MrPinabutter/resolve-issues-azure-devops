@@ -1,10 +1,27 @@
-function getword(info,tab) {
-    chrome.tabs.create({  
-      url: "https://open.spotify.com/search/" + info.selectionText
+chrome.runtime.onInstalled.addListener(() => {
+  chrome.contextMenus.create({
+    id: "resolveComments",
+    title: "Resolver comentários no Azure DevOps",
+    contexts: ["all"],
+    documentUrlPatterns: ["*://dev.azure.com/*"],
+  });
+});
+
+chrome.contextMenus.onClicked.addListener((info, tab) => {
+  if (info.menuItemId === "resolveComments") {
+    chrome.scripting.executeScript({
+      target: { tabId: tab.id },
+      func: resolveComments,
     });
   }
-  chrome.contextMenus.create({
-    title: "Procurar no spotify: %s", 
-    contexts:["selection"], 
-    onclick: getword
-  });
+});
+
+function resolveComments() {
+  [
+    ...document.querySelectorAll(
+      "button.bolt-button.enabled.bolt-focus-treatment"
+    ),
+  ]
+    .filter((it) => it.innerText === "Resolve")
+    .forEach((it) => it.click());
+}
